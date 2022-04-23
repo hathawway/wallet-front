@@ -1,0 +1,31 @@
+<div class="container" (click)="toggle()">
+    {{ purchase.title }}
+  
+    <tui-badge
+      class="support-1"
+      status="success"
+      [value]="formattedPrice"
+      [hoverable]="true"
+    ></tui-badge>
+
+    <span class="close" (click)="onClick()">X</span>
+</div>
+
+<div class="container comment" *ngIf="expand" >
+  <div class="container">
+    {{ purchase.comment }}
+    <button
+        tuiIconButton
+        (click)="edit()"
+        type="button"
+        icon="tuiIconEdit"
+        class="tui-space_right-3 tui-space_bottom-3"
+        [appearance]="exp ? 'primary' : 'accent'"
+        size="s"
+    ></button>
+  </div>
+  
+
+    <app-wallet-add [purchase]="purchase" *ngIf="exp" (update)="updatePurchase($event)"></app-wallet-add>
+</div>
+
